@@ -120,12 +120,17 @@ def join(table1, table2, join_column=None):
         header1 = table1[0]
         header2 = table2[0]
         # handle the case in which we are asked to provide the cross-product of 2 tables
-        # that have one of the names of the columns in common, we are going to call it ColName ColName1,
-        # for example, here if we do it to tables holidays and food, it would have Food and Food1
-        header = header1.copy()
+        # that have one of the names of the columns in common, we are going to call it table1.ColName, table2.ColName,
+        # for example, here if we do it to tables holidays and food, it would have table1.Food and table2.Food
+        header = []
+        for i in range(len(table1[0])):
+            if table1[0][i] in table2[0]:
+                header.append("table1." + table1[0][i])
+            else:
+                header.append(table1[0][i])
         for col_name in header2:
             if col_name in header1:
-                header.append(col_name + "1")
+                header.append("table2." + col_name)
             else:
                 header.append(col_name)
         result.append(header)
@@ -168,7 +173,11 @@ def join(table1, table2, join_column=None):
             for i in range(len(table1[0])):
                 if table1[0][i] == join_column:
                     index_join1 = i
-                header.append(table1[0][i])
+                    header.append(table1[0][i])
+                elif table1[0][i] in table2[0]:
+                    header.append("table1." + table1[0][i])
+                else:
+                    header.append(table1[0][i])
             for i in range(len(table2[0])):
                 col_name = table2[0][i]
                 if col_name == join_column:
@@ -176,8 +185,8 @@ def join(table1, table2, join_column=None):
                 else:
                     # if there is a repeated col name that is not the one we are joining on
                     # do the Name1
-                    if col_name in header:
-                        header.append(col_name + "1")
+                    if col_name in table1[0]:
+                        header.append("table2." + col_name)
                     else:
                         header.append(col_name)
             result.append(header)

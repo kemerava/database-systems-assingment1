@@ -310,7 +310,7 @@ def test__join__repeated_col_names_in_tables():
     test_database2 = [['Food', 'Calories'],
                       ['Hamentasch', 250], ['Matza', 50], ['Hamburger', 350]]
 
-    expected_header = ['Name', 'StartDate', 'Duration', 'Origin', 'Food', 'Food1', 'Calories']
+    expected_header = ['Name', 'StartDate', 'Duration', 'Origin', 'table1.Food', 'table2.Food', 'Calories']
 
     actual_result = database_management.join(test_database1, test_database2)
     actual_header = actual_result[0]
@@ -329,12 +329,12 @@ def test__join__one_table_no_records_without_join_col():
 
     test_database2 = [['Food', 'Calories']]
 
-    expected_result1 = [['Name', 'StartDate', 'Duration', 'Origin', 'Food', 'Food1', 'Calories'],
+    expected_result1 = [['Name', 'StartDate', 'Duration', 'Origin', 'table1.Food', 'table2.Food', 'Calories'],
                         ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple', None, None],
                         ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing', None, None],
                         ['Chanuka', '25 Kislev', 8, 'Rabbinic', None, None]]
 
-    expected_result2 = [['Food', 'Calories', 'Name', 'StartDate', 'Duration', 'Origin', 'Food1'],
+    expected_result2 = [['table1.Food', 'Calories', 'Name', 'StartDate', 'Duration', 'Origin', 'table2.Food'],
                         [None, None, 'Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                         [None, None, 'Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
                         [None, None, 'Chanuka', '25 Kislev', 8, 'Rabbinic']]
@@ -377,8 +377,8 @@ def test__join__both_table_no_records():
     expected_result2 = [['Food', 'Calories', 'Name', 'StartDate', 'Duration', 'Origin']]
 
     # with the join column specified
-    expected_result3 = [['Name', 'StartDate', 'Duration', 'Origin', 'Food', 'Food1', 'Calories']]
-    expected_result4 = [['Food', 'Calories', 'Name', 'StartDate', 'Duration', 'Origin', 'Food1']]
+    expected_result3 = [['Name', 'StartDate', 'Duration', 'Origin', 'table1.Food', 'table2.Food', 'Calories']]
+    expected_result4 = [['table1.Food', 'Calories', 'Name', 'StartDate', 'Duration', 'Origin', 'table2.Food']]
 
     actual_result1 = database_management.join(test_database1, test_database2, "Food")
     actual_result2 = database_management.join(test_database2, test_database1, "Food")
