@@ -13,13 +13,13 @@ def test__build__normal_table():
     expected_database2 = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                           ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                           ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                          ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                          ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                           ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                           ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                           ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                          ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                          ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                           ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                          ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                          ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     actual_database1 = database_management.build(test_file1)
     actual_database2 = database_management.build(test_file2)
@@ -59,13 +59,13 @@ def test__project__no_cols_specified():
     test_database = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                      ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                      ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                      ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                      ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                      ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                      ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     test_empty_col_names = []
     actual_result = database_management.project(test_database, test_empty_col_names)
@@ -78,13 +78,13 @@ def test__project__all_cols():
     test_database = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                      ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                      ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                      ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                      ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                      ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                      ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     test_all_cols = ["*"]
 
@@ -100,13 +100,13 @@ def test__project__specific_cols():
     test_database = [['Name', 'Origin', 'Food'],
                      ['Rosh Hashana', 'Biblical', 'Apple'],
                      ['Yom Kippur', 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', 'Biblical', 'Soup'],
                      ['Chanuka', 'Rabbinic', 'Latke'],
                      ['Purim', 'Rabbinic', 'Hamentasch'],
                      ['Pesach', 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", 'Custom', 'Hamburger'],
                      ['Shavuot', 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", 'Rabbinic', 'Nothing']]
 
     test_specific_cols = ["Name", "Origin", "Food"]
 
@@ -120,13 +120,13 @@ def test__select__no_criteria():
     test_database = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                      ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                      ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                      ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                      ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                      ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                      ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     actual_result1 = database_management.select(test_database)
     actual_result2 = database_management.select(test_database, ())
@@ -140,13 +140,13 @@ def test__select__criteria_wrong_format():
     test_database = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                      ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                      ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                      ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                      ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                      ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                      ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     test_criteria = ("Food")
     actual_result = database_management.select(test_database, test_criteria)
@@ -159,13 +159,13 @@ def test__select__criteria_wrong_col_name():
     test_database = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                      ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                      ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                      ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                      ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                      ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                      ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     test_criteria = ("Fod")
     actual_result = database_management.select(test_database, test_criteria)
@@ -178,13 +178,13 @@ def test__select__criteria_no_records():
     test_database = [['Name', 'StartDate', 'Duration', 'Origin', 'Food'],
                      ['Rosh Hashana', '1 Tishrei', 2, 'Biblical', 'Apple'],
                      ['Yom Kippur', '10 Tishrei', 1, 'Biblical', 'Nothing'],
-                     ['Sukkot|SA|ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
+                     ['Sukkot/SA/ST', '15 Tishrei', 9, 'Biblical', 'Soup'],
                      ['Chanuka', '25 Kislev', 8, 'Rabbinic', 'Latke'],
                      ['Purim', '14 Adar', 1, 'Rabbinic', 'Hamentasch'],
                      ['Pesach', '15 Nissan', 8, 'Biblical', 'Matza'],
-                     ['Lag Ba�Omer', '18 Iyyar', 1, 'Custom', 'Hamburger'],
+                     ["Lag Ba'Omer", '18 Iyyar', 1, 'Custom', 'Hamburger'],
                      ['Shavuot', '6 Sivan', 2, 'Biblical', 'Cheesecake'],
-                     ['Tisha B�Av', '9 Av', 1, 'Rabbinic', 'Nothing']]
+                     ["Tisha B'Av", '9 Av', 1, 'Rabbinic', 'Nothing']]
 
     test_criteria = ("Food", "Blueberry")
 

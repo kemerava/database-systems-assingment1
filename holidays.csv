@@ -1,10 +1,10 @@
 Name,StartDate,Duration,Origin,Food
 Rosh Hashana,1 Tishrei,2,Biblical,Apple
 Yom Kippur,10 Tishrei,1,Biblical,Nothing
-Sukkot|SA|ST,15 Tishrei,9,Biblical,Soup
+Sukkot/SA/ST,15 Tishrei,9,Biblical,Soup
 Chanuka,25 Kislev,8,Rabbinic,Latke
 Purim,14 Adar,1,Rabbinic,Hamentasch
 Pesach,15 Nissan,8,Biblical,Matza
-Lag Ba�Omer,18 Iyyar,1,Custom,Hamburger
+Lag Ba'Omer,18 Iyyar,1,Custom,Hamburger
 Shavuot,6 Sivan,2,Biblical,Cheesecake
-Tisha B�Av,9 Av,1,Rabbinic,Nothing
+Tisha B'Av,9 Av,1,Rabbinic,Nothing
